@@ -66,6 +66,8 @@ case class ExecutedCommandExec(cmd: RunnableCommand) extends SparkPlan {
 
   override def children: Seq[SparkPlan] = Nil
 
+  override def executeToIterator: Iterator[InternalRow] = sideEffectResult.toIterator
+
   override def executeCollect(): Array[InternalRow] = sideEffectResult.toArray
 
   override def executeTake(limit: Int): Array[InternalRow] = sideEffectResult.take(limit).toArray
