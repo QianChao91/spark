@@ -187,7 +187,8 @@
     <test.exclude.tags></test.exclude.tags>
 
     <!-- When using different JDKs for the build, we can't use Zinc for the jdk8 part. -->
-    <useZincForJdk8>true</useZincForJdk8>
+    <!--<useZincForJdk8>true</useZincForJdk8>-->
+    <useZincForJdk8>false</useZincForJdk8>
 
     <!-- Package to use when relocating shaded classes. -->
     <spark.shade.packageName>org.spark_project</spark.shade.packageName>
@@ -319,25 +320,29 @@
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-http</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-continuation</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-servlet</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-servlets</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
@@ -355,25 +360,29 @@
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-util</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-security</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-plus</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>org.eclipse.jetty</groupId>
         <artifactId>jetty-server</artifactId>
         <version>${jetty.version}</version>
-        <scope>provided</scope>
+        <!--<scope>provided</scope>-->
+        <scope>compile</scope>
       </dependency>
       <dependency>
         <groupId>com.google.guava</groupId>
@@ -1947,7 +1956,8 @@
           <configuration>
             <scalaVersion>${scala.version}</scalaVersion>
             <recompileMode>incremental</recompileMode>
-            <useZincServer>true</useZincServer>
+            <!--<useZincServer>true</useZincServer>-->
+            <useZincServer>false</useZincServer>
             <args>
               <arg>-unchecked</arg>
               <arg>-deprecation</arg>
