@@ -196,6 +196,8 @@ private[hive] class HiveClientImpl(
     } finally {
       Thread.currentThread().setContextClassLoader(original)
     }
+    ret.getConf.getAllProperties.asScala.foreach(
+      x => logDebug(s"hive client configuration property: ${x._1} = ${x._2}"))
     ret
   }
 
