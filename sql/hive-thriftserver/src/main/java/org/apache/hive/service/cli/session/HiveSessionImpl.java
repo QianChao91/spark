@@ -325,10 +325,20 @@ public class HiveSessionImpl implements HiveSession {
     return hiveConf;
   }
 
+  private void cmpHiveConf(HiveConf getOne, HiveConf newOne) {
+    for (Map.Entry<String, String> e : getOne) {
+      LOG.debug("get hive conf " + e.getKey() + " -> " + e.getValue());
+    }
+    for (Map.Entry<String, String> e : newOne) {
+      LOG.debug("new hive conf " + e.getKey() + " -> " + e.getValue());
+    }
+  }
+
   @Override
   public IMetaStoreClient getMetaStoreClient() throws HiveSQLException {
     try {
-      return Hive.get(getHiveConf()).getMSC();
+      cmpHiveConf(getHiveConf(), new HiveConf());
+      return Hive.get(new HiveConf()).getMSC();
     } catch (HiveException e) {
       throw new HiveSQLException("Failed to get metastore connection", e);
     } catch (MetaException e) {
