@@ -80,6 +80,7 @@ public class HiveSessionImpl implements HiveSession {
   private String username;
   private final String password;
   private HiveConf hiveConf;
+  private HiveConf metastoreConf;
   private SessionState sessionState;
   private String ipAddress;
   private static final String FETCH_WORK_SERDE_CLASS =
@@ -99,6 +100,7 @@ public class HiveSessionImpl implements HiveSession {
     this.password = password;
     this.sessionHandle = new SessionHandle(protocol);
     this.hiveConf = new HiveConf(serverhiveConf);
+    this.metastoreConf = new HiveConf();
     this.ipAddress = ipAddress;
 
     try {
@@ -328,7 +330,7 @@ public class HiveSessionImpl implements HiveSession {
   @Override
   public IMetaStoreClient getMetaStoreClient() throws HiveSQLException {
     try {
-      return Hive.get(getHiveConf()).getMSC();
+      return Hive.get(metastoreConf).getMSC();
     } catch (HiveException e) {
       throw new HiveSQLException("Failed to get metastore connection", e);
     } catch (MetaException e) {
